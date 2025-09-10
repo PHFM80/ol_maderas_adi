@@ -1,0 +1,41 @@
+/ol_maderas
+│
+├── app.py                          # Punto de entrada principal (Flet)
+│
+├── ui/                             # Interfaz gráfica
+│   ├── formulario.py
+│   └── componentes/
+│       ├── datos_clientes/
+│       │   └── datos_clientes.py
+│       ├── elementos_tabla/
+│       │   ├── elementos_tabla.py
+│       │   ├── form_item.py
+│       │   └── tabla_item.py
+│       ├── encabezado/
+│       │   ├── encabezado_presupuesto.py
+│       │   └── selector_fecha.py
+│       └── condiciones/
+│           └── condiciones.py
+│
+├── db/
+│   └── presupuesto.db                # Base SQLite temporal
+│   └── init_db.py                
+│
+│
+│
+├── pdf_templates/                 # HTML y estilos para el PDF
+│   ├── assets/
+│   |        └── ol_logo.webp
+│   ├── presupuesto.html
+│   └── style-cliente.css
+│   └── style-condiciones.css
+│   └── style-detalle.css
+│   └── style-encabezado.css
+│
+├── utils/
+│   └── pdf_generator.py          # Lógica para generar el PDF
+│   └── paths.py                  # Rutas relativas, si necesitás
+│
+├── venv/
+
+
