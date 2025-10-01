@@ -1,0 +1,30 @@
+c:/ol_maderas/
+    |
+    |-----ol_maderas.exe
+    |-----intrucciones.txt
+    |
+    |-----ol_m_utils/ (carpeta oculta)
+                |
+                |----templates/
+                |       |
+                |       |-----assets/
+                |       |       |
+                |       |       |----ol_logo.webp
+                |       |
+                |       |-----presupuesto.html
+                |       |-----style-cliente.css
+                |       |-----otros archivos de estilos
+                |
+                |-----db/
+                |       |
+                |       |-----presupuesto.db
+                |   
+                |-----presupuestos/
+                |
+                |-----nro_presupuesto/
+                |       |
+                |       |-----presupuesto_anterior.txt
+                |
+                |-----temp/
+                |
+                |-----logs/

@@ -1,0 +1,26 @@
+/*style-condiciones.css*/
+
+/* style-condiciones.css */
+
+.condiciones-doble {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 11px;
+}
+
+.condiciones-doble td {
+    padding: 4px 6px;
+    vertical-align: top;
+}
+
+.condiciones-doble td:nth-child(1),
+.condiciones-doble td:nth-child(3) {
+    width: 20%;
+    font-weight: bold;
+}
+
+.condiciones-doble td:nth-child(2),
+.condiciones-doble td:nth-child(4) {
+    width: 30%;
+}

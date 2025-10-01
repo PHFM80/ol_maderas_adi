@@ -1,0 +1,73 @@
+/*style-encabezados.css*/
+/* style-encabezados.css */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    margin: 30px;
+    color: #333;
+}
+
+h2 {
+    margin-top: 30px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.encabezado td {
+    vertical-align: top;
+    width: 50%;
+    padding: 5px; /* Reducido de 10px a 5px */
+    max-height: 3cm; /* Limita altura máxima, opcional */
+}
+
+.datos-empresa p,
+.presupuesto-datos p {
+    margin: 2px 0;  /* reduce espacio vertical entre líneas */
+    line-height: 1.2;  /* más compacto */
+}
+
+
+.contenedor-logo-datos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.datos-empresa {
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.info-presupuesto {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+}
+
+.logo-presupuesto {
+    width: 5cm;
+    height: auto;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.presupuesto-datos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+@page {
+    margin: 0.1cm;
+}
