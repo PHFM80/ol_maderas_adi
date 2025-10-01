@@ -1,0 +1,18 @@
+/*style-clientes.css*/
+
+
+.cliente {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.cliente td {
+    padding: 4px;
+    vertical-align: top;
+}
+
+.cliente td:first-child {
+    width: 35%; /* ajustable */
+    font-weight: bold;
+}
