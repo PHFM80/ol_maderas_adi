@@ -1,0 +1,28 @@
+/* style-detalle.css*/
+
+.items {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+.items th, .items td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+.items thead th {
+    background-color: #eee;
+    width: 10%;
+    font-weight: bold;
+}
+
+.items tfoot td {
+    font-weight: bold;
+    background-color: #f9f9f9;
+}

@@ -1,0 +1,151 @@
+<!-- pdf_templates\presupuesto.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Presupuesto</title>
+    <link rel="stylesheet" href="style-encabezado.css">
+    <link rel="stylesheet" href="style-cliente.css">
+    <link rel="stylesheet" href="style-detalle.css">
+    <link rel="stylesheet" href="style-condiciones.css">
+</head>
+<body>
+
+<!-- ENCABEZADO -->
+<table class="encabezado">
+    <tr>
+        <td class="logo">
+            <div class="contenedor-logo-datos">
+                <div class="datos-empresa">
+                    <p>O.L. e hijos de pura madera</p>
+                    <p>Fábrica de puertas y ventanas</p>
+                    <p>San Martín 4845</p>
+                    <p>Alto del olvido - LAVALLE</p>
+                    <p>Cel: 261-2155865</p>
+                    <p>E-mail: oscarlucero78@gmail.com</p>
+                    <p>Contacto: Oscar Lucero</p>
+                </div>
+            </div>
+        </td>
+        <td class="info-presupuesto">
+            <img src="assets/ol_logo.webp" alt="Logo Empresa" class="logo-presupuesto">
+            <div class="presupuesto-datos">
+                <p><strong>Presupuesto Nº:</strong> {{ numero_presupuesto }}</p>
+                <p><strong>Fecha:</strong> {{ fecha }}</p>
+                <p><strong>IVA:</strong> Responsable Inscripto</p>
+                <p><strong>CUIT:</strong>20-22222222-20 </p>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<!-- DATOS DEL CLIENTE -->
+<h2>Datos del Cliente</h2>
+<table class="cliente">
+    <tr>
+        <td><strong>Razón Social:</strong> {{ cliente.razon_social }}</td>
+        <td><strong>CUIT / DNI:</strong> {{ cliente.cuit }}</td>
+    </tr>
+    <tr>
+        <td><strong>Domicilio:</strong> {{ cliente.domicilio }}</td>
+        <td><strong>Condición IVA:</strong> {{ cliente.condicion_iva }}</td>
+    </tr>
+    <tr>
+        <td><strong>Provincia:</strong> {{ cliente.provincia }}</td>
+        <td><strong>Teléfono:</strong> {{ cliente.telefono }}</td>
+    </tr>
+    <tr>
+        <td><strong>Localidad:</strong> {{ cliente.localidad }}</td>
+        <td><strong>Email:</strong> {{ cliente.email }}</td>
+    </tr>
+</table>
+
+
+<!-- TABLA DE ÍTEMS -->
+<h2>Detalle del Presupuesto</h2>
+<table class="items">
+    <colgroup>
+        <col style="width: 9%;">     <!-- Ítem -->
+        <col style="width: 9%;">    <!-- Cant. -->
+        <col style="width: 42%;">    <!-- Descripción -->
+        <col style="width: 20%;">    <!-- Precio Unitario -->
+        <col style="width: 20%;">    <!-- Total -->
+    </colgroup>
+    <thead>
+        <tr>
+            <th>Ítem</th>
+            <th>Cant.</th>
+            <th>Descripción</th>
+            <th>Precio Unitario</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ item.cantidad }}</td>
+            <td>{{ item.descripcion }}</td>
+            <td>$ {{ item.precio_unitario }}</td>
+            <td>$ {{ item.total }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3"></td>
+            <td>Subtotal</td>
+            <td>$ {{ subtotal }}</td>
+        </tr>
+        <tr>
+            <td colspan="3"></td>
+            <td>Descuento {{ descuento.porcentaje }}%</td>
+            <td>$ {{ descuento.valor }}</td>
+        </tr>
+        <tr>
+            <td colspan="3"></td>
+            <td>IVA 10.5%</td>
+            <td>$ {{ iva_105 }}</td>
+        </tr>
+        <tr>
+            <td colspan="3"></td>
+            <td>IVA 21%</td>
+            <td>$ {{ iva_21 }}</td>
+        </tr>
+        <tr>
+            <td colspan="3">Son: {{ total_letras }}</td>
+            <td><strong>Total:</strong></td>
+            <td><strong>$ {{ total_final }}</strong></td>
+        </tr>
+    </tfoot>
+
+</table>
+
+<p class="valor-expresado">Valor expresado en: {{ moneda }}</p>
+
+<!-- CONDICIONES -->
+<h2>Condiciones</h2>
+<table class="condiciones-doble">
+    <tr>
+        <td><strong>Validez de la oferta:</strong></td>
+        <td>{{ validez }}</td>
+        <td><strong>Lugar de entrega:</strong></td>
+        <td>{{ lugar_entrega }}</td>
+    </tr>
+    <tr>
+        <td><strong>Plazo de entrega:</strong></td>
+        <td>{{ plazo_entrega }}</td>
+        <td><strong>Transporte:</strong></td>
+        <td>{{ transporte }}</td>
+    </tr>
+    <tr>
+        <td><strong>Forma de pago:</strong></td>
+        <td>{{ forma_pago }}</td>
+        <td><strong>Condición de pago:</strong></td>
+        <td>{{ condiciones_pago }}</td>
+    </tr>
+</table>
+
+
+</body>
+</html>
