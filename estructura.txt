@@ -1,29 +1,55 @@
 /ol_maderas
 │
-├── app.py                          # Punto de entrada principal (Flet)
+|-- main.py                             Punto de entrada principal (Flet)
+|
+|--menu.py                              ventana inical con botnes de navegacion y boton de cierre de app
 │
 ├── ui/                             # Interfaz gráfica
-│   ├── formulario.py
-│   └── componentes/
-│       ├── datos_clientes/
-│       │   └── datos_clientes.py
-│       ├── elementos_tabla/
-│       │   ├── elementos_tabla.py
-│       │   ├── form_item.py
-│       │   └── tabla_item.py
-│       ├── encabezado/
-│       │   ├── encabezado_presupuesto.py
-│       │   └── selector_fecha.py
-│       └── condiciones/
-│           └── condiciones.py
-│
+|   |
+│   |---formulario/
+|   |       |
+|   |       |----- formulario.py        contiene el llamado de la ui; la logica y sus llamados
+|   |       |----- formulairo_ui.py 
+|   |       |----- selector_clientes.py 
+|   |       |----- selector_fecha.py 
+|   |       |----- items_ui.py 
+|   |       |----- ultimo_nro_presupuesto.py 
+│   |
+|   |---clientes/
+|   |       |
+|   |       |----- __innit__.py 
+|   |       |----- clientes_buscar.py 
+|   |       |----- clientes_confirmacion.py 
+|   |       |----- clientes_db.py 
+|   |       |----- clientes_guardar.py 
+|   |       |----- clientes_ui.py 
+|   |       |----- clientes_utils.py 
+|   |       |----- clientes.py          contiene el llamado de la ui; la logica y sus llamados
+|   |
+|   |---consultas/
+|   |       |
+|   |       |----- __innit__.py 
+|   |       |----- consultas.py 
+|   |       |
+|   |
+|   |---previsualizacion/
+|           |
+|           |----- previsualizacion_ui.py 
+|           |----- condiciones_ui.py 
+|           |----- datos_presupuesto_ui.py 
+|           |----- resumen_ui.py 
+|           |----- tabla_items_ui.py
+|           |----- alerta_conclusion.py 
+|   
+|   
 ├── db/
-│   └── presupuesto.db                # Base SQLite temporal
-│   └── init_db.py                
-│
-│
+|   |
+│   |----- presupuesto.db                # Base SQLite temporal
+│   |----- init_db.py        
+|   |----- db_config.py      
 │
 ├── pdf_templates/                 # HTML y estilos para el PDF
+|   |
 │   ├── assets/
 │   |        └── ol_logo.webp
 │   ├── presupuesto.html
@@ -32,9 +58,10 @@
 │   └── style-detalle.css
 │   └── style-encabezado.css
 │
+├── tests/                        # Pruebas unitarias
+|    ├── test_formatear_moneda.py
+|    └── test_resumen_calculo.py
 ├── utils/
-│   └── pdf_generator.py          # Lógica para generar el PDF
-│   └── paths.py                  # Rutas relativas, si necesitás
 │
 ├── venv/
 
