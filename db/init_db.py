@@ -9,65 +9,60 @@ def crear_tablas():
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
+    # Tabla clientes
     cursor.execute("""
-        CREATE TABLE IF NOT EXISTS encabezado (
-            nro_presupuesto INTEGER,
-            fecha TEXT
-        )
-    """)
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS datos_cliente (
+        CREATE TABLE IF NOT EXISTS clientes (
+            id_cliente INTEGER PRIMARY KEY AUTOINCREMENT,
             razon_social TEXT,
             domicilio TEXT,
             provincia TEXT,
             localidad TEXT,
-            cuit_dni TEXT,
+            cuit_dni INTERGER,
             condicion_iva TEXT,
-            telefono TEXT,
+            telefono interger,
             email TEXT
         )
     """)
+
+    # Tabla presupuestos
     cursor.execute("""
-        CREATE TABLE IF NOT EXISTS detalle_producto (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            cantidad INTEGER,
-            descripcion TEXT,
-            precio_unitario REAL,
-            total REAL
-        )
-    """)
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS moneda (
-            moneda TEXT
-        )
-    """)
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS condiciones_venta (
+        CREATE TABLE IF NOT EXISTS presupuestos (
+            id_presupuesto INTEGER PRIMARY KEY AUTOINCREMENT,
+            id_cliente INTEGER,
+            fecha TEXT,
+            moneda TEXT,
             validez_oferta TEXT,
             forma_pago TEXT,
             condicion_pago TEXT,
-            plazo_entrega TEXT, 
+            plazo_entrega TEXT,
             lugar_entrega TEXT,
-            transporte TEXT
-        )
-    """)
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS valores_presupuesto (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            transporte TEXT,
             subtotal REAL,
             descuento_porcentaje REAL,
             descuento_valor REAL,
             iva_105 REAL,
             iva_21 REAL,
             total_final REAL,
-            total_letras TEXT
+            total_letras TEXT,
+            FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
         )
     """)
 
+    # Tabla items del presupuesto
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS items (
+            id_item INTEGER PRIMARY KEY AUTOINCREMENT,
+            id_presupuesto INTEGER,
+            cantidad INTEGER,
+            descripcion TEXT,
+            precio_unitario REAL,
+            total REAL,
+            FOREIGN KEY (id_presupuesto) REFERENCES presupuestos(id_presupuesto)
+        )
+    """)
 
     conn.commit()
     conn.close()
-
 
 
 if __name__ == "__main__":
