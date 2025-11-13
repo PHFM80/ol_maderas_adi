@@ -1,3 +1,6 @@
 venv/
 __pycache__/
 *.pyc
+
+Informe_Tecnico.docx
+db/presupuesto.db
