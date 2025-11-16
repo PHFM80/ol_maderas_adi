@@ -66,20 +66,63 @@ def mostrar_formulario(page: ft.Page, datos_presupuesto=None, items=None, resume
         menu_principal(page)
 
     def previsualizar(e):
+        # --- Validación del descuento ---
+        valor_desc = descuento.value
+
+        # Intentar convertir a número
+        try:
+            valor_desc_float = float(valor_desc)
+            valido = 1 <= valor_desc_float <= 100
+        except:
+            valido = False
+
+        if not valido:
+            # Marcar campo en rojo
+            descuento.border_color = ft.Colors.RED
+            descuento.helper_text = "Ingrese un porcentaje válido (1–100)"
+            descuento.helper_style = ft.TextStyle(color=ft.Colors.RED)
+            descuento.update()
+
+            # Mostrar alerta y detener función
+            page.snack_bar = ft.SnackBar(
+                content=ft.Text("El valor del descuento no es válido."),
+                bgcolor=ft.Colors.RED_300
+            )
+            page.snack_bar.open = True
+            page.update()
+            return  # ← IMPORTANTE, NO AVANZA
+
+        # Si es válido → limpiar estado de error
+        descuento.border_color = None
+        descuento.helper_text = None
+        descuento.update()
+
+        # --- Continuar flujo normal ---
         datos = {
             "numero_presupuesto": numero_presupuesto.value,
             "fecha": selector_fecha.fecha_seleccionada,
             "id_cliente": cliente_dropdown.value,
             "moneda": moneda.value,
         }
-        previ.mostrar_previsualizacion(page, datos, items_list, {"descuento": descuento.value, "iva_105": iva_105.value, "iva_21": iva_21.value}, {
-            "validez_oferta": validez_oferta.value,
-            "forma_pago": forma_pago.value,
-            "condicion_pago": condicion_pago.value,
-            "plazo_entrega": plazo_entrega.value,
-            "lugar_entrega": lugar_entrega.value,
-            "transporte": transporte.value
-        })
+
+        previ.mostrar_previsualizacion(
+            page,
+            datos,
+            items_list,
+            {
+                "descuento": valor_desc,
+                "iva_105": iva_105.value,
+                "iva_21": iva_21.value
+            },
+            {
+                "validez_oferta": validez_oferta.value,
+                "forma_pago": forma_pago.value,
+                "condicion_pago": condicion_pago.value,
+                "plazo_entrega": plazo_entrega.value,
+                "lugar_entrega": lugar_entrega.value,
+                "transporte": transporte.value
+            }
+        )
 
     # --- Botones inferiores ---
     boton_style = ft.ButtonStyle(text_style=ft.TextStyle(size=22))
