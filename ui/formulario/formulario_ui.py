@@ -13,7 +13,8 @@ def crear_campos_cliente(clientes_options):
     cliente_dropdown = ft.Dropdown(
         label="Seleccionar Cliente",
         width=CONTROL_INTERNO_WIDTH,
-        options=clientes_options
+        options=clientes_options,
+        menu_height=300  # ← scroll automático (6 ítems aprox)
     )
     contenedor = ft.Container(
         content=ft.Column(

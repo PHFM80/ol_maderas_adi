@@ -18,7 +18,8 @@ def mostrar_confirmacion(page: ft.Page, mensaje: str, volver_menu_func, cargar_o
                             on_click=lambda e: volver_menu_func(page),
                             width=180,
                             height=50,
-                            bgcolor=ft.Colors.RED_400
+                            bgcolor="#AEC6FF"
+
                         ),
                         ft.ElevatedButton(
                             "Cargar otro cliente",

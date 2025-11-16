@@ -5,6 +5,8 @@ from ui.consultas.generar_pdf_reimpresion import generar_pdf_reimpresion
 from ui.utils.alerta_conclusion import mostrar_alerta
 from db.db_config import get_connection
 
+
+
 def mostrar_reimpresion(page: ft.Page):
     page.controls.clear()
     page.bgcolor = ft.Colors.BLUE_GREY_300
@@ -129,11 +131,12 @@ def mostrar_reimpresion(page: ft.Page):
         mostrar_alerta(page, f"PDF del presupuesto nro: {id_presupuesto}; fue re-generado correctamente")
 
     # --- Botones ---
+    from .consultas import mostrar_consultas
     boton_style = ft.ButtonStyle(text_style=ft.TextStyle(size=22))
     botones = ft.Row(
         [
             ft.ElevatedButton("Reimprimir", width=220, height=50, bgcolor=ft.Colors.GREEN_200, style=boton_style, on_click=reimprimir),
-            ft.ElevatedButton("Volver", width=220, height=50, bgcolor=ft.Colors.RED_400, style=boton_style, on_click=lambda e: mostrar_consultas(page))
+            ft.ElevatedButton("Volver", width=220, height=50, bgcolor="#DDDF79", style=boton_style, on_click=lambda e: mostrar_consultas(page))
         ],
         alignment=ft.MainAxisAlignment.CENTER,
         spacing=25
