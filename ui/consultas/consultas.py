@@ -49,7 +49,7 @@ def mostrar_consultas(page: ft.Page):
                 on_click=volver_menu,
                 width=300,
                 height=50,
-                bgcolor=ft.Colors.RED_400,
+                bgcolor="#DDDF79",
                 style=boton_style
             ),
         ],
